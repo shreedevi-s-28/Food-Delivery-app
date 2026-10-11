@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuickBite - Online food delivery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <button type="button" class="brand" id="brand">QuickBite</button>
+    <nav class="nav" aria-label="Main">
+      <button type="button" class="nav-link" id="nav-menu">Menu</button>
+      <button type="button" class="nav-link" id="nav-orders">My orders</button>
+      <button type="button" class="nav-link" id="nav-login">Log in</button>
+      <span class="user-chip" id="user-chip" hidden></span>
+      <button type="button" class="nav-link" id="nav-logout" hidden>Log out</button>
+      <button type="button" class="cart-btn" id="cart-toggle">
+        Cart <span class="cart-count" id="cart-count">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Menu -->
+    <section id="view-menu" class="view">
+      <div class="hero">
+        <h1>Hungry? Pick a dish and we will bring it over.</h1>
+        <p>Browse the menu, add what you like to your cart and place your order when you are ready.</p>
+        <label class="search">
+          <span class="sr-only">Search the menu</span>
+          <input type="search" id="search" placeholder="Search the menu" autocomplete="off">
+        </label>
+      </div>
+      <div class="chips" id="chips"></div>
+      <div class="status-msg" id="menu-status" role="status"></div>
+      <div id="menu-list"></div>
+    </section>
+
+    <!-- Log in / Create account -->
+    <section id="view-auth" class="view" hidden>
+      <div class="auth">
+        <div class="tabs" role="tablist">
+          <button type="button" class="tab active" id="tab-login" role="tab" aria-selected="true">Log in</button>
+          <button type="button" class="tab" id="tab-register" role="tab" aria-selected="false">Create account</button>
+        </div>
+        <p class="note" id="auth-note" hidden></p>
+
+        <form id="form-login" novalidate>
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" autocomplete="email">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" autocomplete="current-password">
+          <p class="form-error" id="login-error" role="alert"></p>
+          <button type="submit" class="btn btn-primary btn-block" id="login-submit">Log in</button>
+        </form>
+
+        <form id="form-register" novalidate hidden>
+          <label for="reg-name">Full name</label>
+          <input type="text" id="reg-name" maxlength="100" autocomplete="name">
+          <label for="reg-email">Email</label>
+          <input type="email" id="reg-email" maxlength="150" autocomplete="email">
+          <label for="reg-phone">Phone number</label>
+          <input type="tel" id="reg-phone" maxlength="10" inputmode="numeric" autocomplete="tel" placeholder="10 digits">
+          <label for="reg-address">Delivery address (optional)</label>
+          <textarea id="reg-address" rows="2" maxlength="250" autocomplete="street-address"></textarea>
+          <label for="reg-password">Password</label>
+          <input type="password" id="reg-password" maxlength="64" autocomplete="new-password" aria-describedby="pw-hint">
+          <p class="hint" id="pw-hint">At least 8 characters, with a letter and a number.</p>
+          <label for="reg-confirm">Confirm password</label>
+          <input type="password" id="reg-confirm" maxlength="64" autocomplete="new-password">
+          <p class="form-error" id="register-error" role="alert"></p>
+          <button type="submit" class="btn btn-primary btn-block" id="register-submit">Create account</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Order history -->
+    <section id="view-orders" class="view" hidden>
+      <h2 class="page-title">My orders</h2>
+      <div class="status-msg" id="orders-status" role="status"></div>
+      <div id="orders-list"></div>
+    </section>
+
+  </main>
+
+  <!-- Cart drawer -->
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="cart" id="cart" aria-label="Your cart" aria-hidden="true">
+    <div class="cart-head">
+      <h2>Your cart</h2>
+      <button type="button" class="icon-btn" id="cart-close" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-body" id="cart-items"></div>
+    <div class="cart-foot">
+      <div class="total-row"><span>Total</span><strong id="cart-total">&#8377;0.00</strong></div>
+      <label for="cart-address">Delivery address</label>
+      <textarea id="cart-address" rows="2" maxlength="250" placeholder="Room or house number, street, landmark"></textarea>
+      <p class="form-error" id="cart-error" role="alert"></p>
+      <button type="button" class="btn btn-primary btn-block" id="place-order">Place order</button>
+      <p class="hint">The server recalculates the final amount from the current menu prices.</p>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
