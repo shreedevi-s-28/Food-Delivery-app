@@ -1,0 +1,17 @@
+# Compiled Java
+*.class
+backend/out/
+
+# Oracle JDBC driver - download it yourself (see README)
+backend/lib/
+*.jar
+
+# Secrets: never commit passwords
+.env
+*.env
+
+# OS / editor files
+.DS_Store
+.idea/
+.vscode/
+*.log
