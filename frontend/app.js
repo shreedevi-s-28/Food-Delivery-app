@@ -5,7 +5,7 @@
 
 // Served by the Java backend (the normal way): call "/api/..." on the same address.
 // Opened as a file, or from "python3 -m http.server 5500": the backend is expected on localhost:8080.
-const API_BASE = (location.protocol === "file:" || location.port === "5500") ? "http://localhost:8080" : "";
+const API_BASE = "https://food-delivery-app-8v24.onrender.com";
 const MAX_QTY = 20;
 const EMAIL_RE = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 const STATUS_LABELS = {
